@@ -1,13 +1,14 @@
 package org.example;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 
-class WhatMultipleTest {
+public class WhatMultipleTest {
 
-    @org.junit.jupiter.api.Test
-    void whatDoesItReturn() {
+    @Test
+    public void whatDoesItReturn() {
         WhatMultiple wm = new WhatMultiple();
         String expected = "FizzBuzz";
         String result = wm.WhatDoesItReturn();
