@@ -1,7 +1,4 @@
 package org.example;
-
-
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +10,7 @@ public class Cities {
     List<String> cities = Arrays.asList("Sevilla", "Malaga", "Granada", "Madrid", "Cordoba", "Segovia", "Mallorca");
 
     public String[] ReturnCity(String myString) {
+        myString = myString.substring(0, 1).toUpperCase() + myString.substring(1);
         String[] result;
         ArrayList<String> moreThanOneCity = new ArrayList<String>();
 
@@ -23,25 +21,36 @@ public class Cities {
 
             for (String city : cities) {
 
-                if (city.length() >= myString.length() && city.substring(0, myString.length()).equals(myString)) { //Se compara el inicio de la cadena
+                if (myString.contains("*")) {
+                    if (myString.charAt(myString.length() - 1) == '*' && city.substring(0, myString.length() - 1).equals(myString.substring(0, myString.length() - 1))) {
+                        moreThanOneCity.add(city);
+                    } else {
+                        result = new String[1];
+                        result[0] = "Incorrect format";
+                    }
+                } else if (myString.contains("?")) {
+
+                    int index;
+                    index = myString.indexOf("?");
+
+                    if (city.substring(0, index - 1).equals(myString.substring(0, index - 1)) && city.substring(index + 1, myString.length()).equals(myString.substring(index + 1))) {
+                        moreThanOneCity.add(city);
+
+                    }
+                } else if (city.length() >= myString.length() && city.startsWith(myString)) {
                     moreThanOneCity.add(city);
                 }
             }
 
-
-
-            if (moreThanOneCity.size() > 0) {
-                result = new String[moreThanOneCity.size()];
-                moreThanOneCity.toArray(result);
-            } else {
-                result = new String[1];
-                result[0] = "Nothing found";
-            }
+                if (moreThanOneCity.size() > 0) {
+                    result = new String[moreThanOneCity.size()];
+                    moreThanOneCity.toArray(result);
+                } else {
+                    result = new String[1];
+                    result[0] = "Nothing found";
+                }
 
         }
-
         return result;
     }
-
-
 }

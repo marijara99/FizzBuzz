@@ -1,7 +1,6 @@
 package org.example;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class CitiesTest {
@@ -19,12 +18,22 @@ public class CitiesTest {
     @Test
     public void CitiesTest3(){
         Cities cities = new Cities();
-        assertArrayEquals(new String[]{"Madrid"}, cities.ReturnCity("Mad"));
+        assertArrayEquals(new String[]{"Madrid"}, cities.ReturnCity("mad"));
     }
     @Test
     public void CitiesTest4(){
         Cities cities = new Cities();
         assertArrayEquals(new String[]{"Nothing found"}, cities.ReturnCity("Yugoslavia"));
+    }
+    @Test
+    public void CitiesTest5(){
+        Cities cities = new Cities();
+        assertArrayEquals(new String[]{"Madrid"}, cities.ReturnCity("Ma?r"));
+    }
+    @Test
+    public void CitiesTest6(){
+        Cities cities = new Cities();
+        assertArrayEquals(new String[]{"Malaga", "Madrid", "Mallorca"}, cities.ReturnCity("Ma*"));
     }
 
 }
