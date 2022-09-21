@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class WhatMultiple {
     private Integer number;
-    private String result;
+    public String result;
 
     public WhatMultiple(int number) {
         this.number = number;
