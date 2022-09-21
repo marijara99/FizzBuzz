@@ -6,9 +6,7 @@ public class WhatMultiple {
     private Integer number;
     public String result;
 
-    public WhatMultiple(int number) {
-        this.number = number;
-    }
+    
 
     public String WhatDoesItReturn() {
 
@@ -17,8 +15,6 @@ public class WhatMultiple {
             System.out.println("Introduce un numero entre 0 y 100");
             Scanner sc = new Scanner(System.in);
             number = sc.nextInt();
-
-
         }
 
         if (number % 15 == 0) {
